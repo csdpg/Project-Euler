@@ -1,0 +1,47 @@
+ANSWER = 0
+for n in range(1, 1001):
+    res = 0
+
+    dict_units = {1:3, 2:3, 3:5, 4:4, 5:4, 6:3, 7:5, 8:5, 9:4, 10:3, 11:6, 12:6, 13:8, 14:8, 15:7, 16:7, 17:9, 18:8, 19:8, 20:6}
+    dict_tens = {2:6 , 3:6 , 4:6 , 5:5 , 6:5 , 7:7 , 8:6 , 9:6}
+
+    if n==1000:
+        res+=11
+
+    elif n>99:
+
+        res += 7 #"hundred"
+        tensAndUnits = n%100
+
+        hundreds = n/100
+        res += dict_units[hundreds] #hundred's place
+
+        n = n%100 #just units and tens
+
+        if n != 0:
+            res += 3 #"and"
+
+        if n>0 and n<21:
+            res += dict_units[n]
+
+        elif n>20:
+            tens = n/10
+            res += dict_tens[tens]
+            n = n%10
+            if n!=0:
+                res += dict_units[n]
+    else:
+        if n>0 and n<21:
+            res += dict_units[n]
+        elif n>20:
+            tens = n/10
+            res += dict_tens[tens]
+            n = n%10
+            if n!=0:
+                res += dict_units[n]
+
+    ANSWER += res
+
+print ANSWER
+
+#ANSWER OFF BY 100. Which value is incorrect?
