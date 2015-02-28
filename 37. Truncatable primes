@@ -1,0 +1,67 @@
+import math
+
+def isPrime(n):
+    if n==1:
+        return False
+    elif n<4:
+        return True
+    elif n%2==0:
+        return False
+    elif n<9:
+        return True
+    elif n%3==0:
+        None
+    else:
+        r = math.floor(math.sqrt(n))
+        f =5
+        while f<=r:
+            if n%f==0:
+                return False
+            if n%(f+2)==0:
+                return False
+            f += 6
+        return True
+
+
+def isTruncable(n):
+    num = n
+
+    while num>0:
+        num /= 10
+        if num == 0:
+            break
+        if not isPrime(num):
+            return False
+
+    num = n
+
+    while num>0:
+        num = str(num)
+        num = num[1:]
+        if num == "":
+            break
+        num = int(num)
+        if not isPrime(num):
+            return False
+    return True
+
+def GENPrimeNEW():
+    n = 1
+    while True:
+        n += 1
+        if isPrime(n):
+            yield n
+
+genP = GENPrimeNEW()
+
+s = 0
+count = 0
+
+
+
+while count<=14:
+    CandPrime = next(genP)
+    if isTruncable(CandPrime):
+        count += 1
+        s += CandPrime
+print (s-17)
