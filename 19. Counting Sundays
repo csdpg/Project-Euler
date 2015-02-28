@@ -1,0 +1,78 @@
+def genDayOf1Jan():
+    DICT = {0:"Mon", 1:"Tue", 2:"Wed", 3:"Thu", 4:"Fri", 5:"Sat", 6:"Sun"}
+    key = 6
+    for year in range(1900,2001):
+
+        if year%100==0 and year%400==0:
+            key+=1
+            if key == 7:
+                key = 0
+            if key == 8:
+                key = 1
+            if key == 9:
+                key = 2
+            yield DICT[key]
+            key += 1
+
+        elif year%100!=0 and year%4==0:
+            key+=1
+            if key == 7:
+                key = 0
+            if key == 8:
+                key = 1
+            if key == 9:
+                key = 2
+            yield DICT[key]
+            key += 1
+
+        else:
+            key+=1
+            if key == 7:
+                key = 0
+            if key == 8:
+                key = 1
+            if key == 9:
+                key = 2
+            yield DICT[key]
+
+Gen1stMonDay = genDayOf1Jan()
+
+
+def isLeap(year):
+    if year%100==0 and year%400==0:
+        return True
+    elif year%100!=0 and year%4==0:
+        return True
+    else:
+        return False
+
+
+LIST = [0, 3, 3, 6, 1, 4, 6, 2, 5, 0, 3, 5]
+LIST_LEAP = [6, 2, 3, 6, 1, 4, 6, 2, 5, 0, 3, 5]
+
+
+target = {"Mon":6, "Tue":5, "Wed":4, "Thu":3, "Fri":2, "Sat":1, "Sun":0}
+year = 1899
+limit = 0
+
+result = 0
+
+while limit<100:
+    year += 1
+
+    limit += 1
+    DayJan = next(Gen1stMonDay)
+
+    SUN = 0
+
+    if isLeap(year):
+        listt = LIST_LEAP
+    else:
+        listt = LIST
+
+    for element in listt:
+        if element == target[DayJan]:
+            SUN += 1
+
+    result += SUN
+print result-2
