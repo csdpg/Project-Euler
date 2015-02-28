@@ -1,0 +1,15 @@
+def sumOf5thPower(num):
+    summ = 0
+    while True:
+        if num==0:
+            break
+        summ += (num%10)**5
+        num /= 10
+    return summ
+
+result = 0
+for num in range(2, 10000000):
+    if num==sumOf5thPower(num):
+        result += num
+
+print result
