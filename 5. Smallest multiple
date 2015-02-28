@@ -1,0 +1,16 @@
+def isDivByAllUpto20(num):
+    div = 1
+    while div<=20:
+        if num%div==0:
+            None
+        else:
+            return False
+        div+=1
+    return True
+
+num = 0
+while True:
+    num += 20
+    if isDivByAllUpto20(num):
+        print num
+        break
