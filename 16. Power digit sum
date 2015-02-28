@@ -1,0 +1,6 @@
+numb = str(2**1000)
+summ = 0
+for digit in numb:
+    summ += int(digit)
+    
+print summ
