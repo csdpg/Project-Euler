@@ -1,0 +1,16 @@
+countABC = 0
+s = 0
+
+for p in xrange(1000, 3, -1):
+    countABC = 0
+    for a in xrange(p-2, 3, -1):
+        for b in xrange(p-2, a, -1):
+            #for c in xrange(p-2, b, -1):
+                #if a+b+c == p:
+            c = p-a-b
+            if a**2+b**2==c**2:
+                countABC += 1
+                if countABC>s:
+                    s = countABC
+                    print "Count: %i"%s
+                    print "P: %i"%p
