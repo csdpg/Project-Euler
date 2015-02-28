@@ -1,0 +1,21 @@
+def isPalindrome(check):
+    check = str(check)
+    if check == "":
+        return True
+    if check[0]==check[-1]:
+        None
+    else:
+        return False
+    return isPalindrome(check[1:-1])
+
+def Palindrome():
+    dummy = 0
+    for a in range(999, 99, -1):
+        for b in range(999, 99, -1):
+            check = a*b
+            if isPalindrome(check):
+                if check>dummy:
+                    dummy = check
+    return dummy
+
+print Palindrome()
