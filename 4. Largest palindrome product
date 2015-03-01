@@ -11,8 +11,10 @@ def isPalindrome(check):
 def Palindrome():
     dummy = 0
     for a in range(999, 99, -1):
-        for b in range(999, 99, -1):
+        for b in range(999, a, -1):
             check = a*b
+            if check<=dummy:
+                break
             if isPalindrome(check):
                 if check>dummy:
                     dummy = check
