@@ -1,0 +1,46 @@
+def genPentagonal():
+    n = 0
+    while True:
+        n += 1
+        yield (n*(3*n-1))/2
+
+pent = genPentagonal()
+
+def genTriangle():
+    n = 0
+    while True:
+        n += 1
+        yield (n*(n+1))/2
+
+tri = genTriangle()
+
+def genHexa():
+    n = 0
+    while True:
+        n += 1
+        yield (n*(2*n-1))
+
+hexa = genHexa()
+
+limit = 56000
+
+listT = []
+for i in range(limit):
+    listT.append(next(tri))
+
+listH = []
+for i in range(limit):
+    listH.append(next(hexa))
+
+listP = []
+for i in range(limit):
+    listP.append(next(pent))
+
+
+for t in listT[285:]:
+        for p in listP[165:]:
+            if t==p:
+                for h in listH[143:]:
+                        if p==h:
+                            print t
+                            break
