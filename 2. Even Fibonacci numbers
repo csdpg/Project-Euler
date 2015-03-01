@@ -1,11 +1,12 @@
-limit=4000000
-summ=0
-a=1
-b=1
-c=a+b
-while c<limit:
-    summ=summ+c
-    a=b+c
-    b=c+a
-    c=a+b
+target = 4000000
+
+a = 2
+b = 8
+summ = 10
+
+while summ <target:
+    c = 4*b+a
+    summ += c
+    a = b
+    b = c
 print summ
