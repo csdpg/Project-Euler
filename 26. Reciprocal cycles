@@ -8,7 +8,36 @@ def isTerminating(n):
     else:
         return True
 
+def recurCount(d):
+    b = 1
 
+    b %= d
+    check = b
+
+    counter = 0
+    while counter <= d-1:
+
+        counter += 1
+
+        a = b*10
+        a %= d
+        b = a
+
+        if b == check:
+            break
+
+    if counter<d:
+        return counter
+    else:
+        return None
+        
+result = 0
 for d in range(2, 1000):
     if not isTerminating(d):
-        print "(1/%i)"%d,
+        recur_count = recurCount(d)
+        if recur_count == None:
+            continue
+        else:
+            if recur_count>result:
+                result = d
+print result
