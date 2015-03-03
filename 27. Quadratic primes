@@ -1,0 +1,65 @@
+import math
+
+def isPrime(n):
+    n = abs(n)
+    if n==1:
+        return False
+    elif n<4:
+        return True
+    elif n%2==0:
+        return False
+    elif n<9:
+        return True
+    elif n%3==0:
+        return False
+    else:
+        r = math.floor(math.sqrt(n))
+        f =5
+        while f<=r:
+            if n%f==0:
+                return False
+            if n%(f+2)==0:
+                return False
+            f += 6
+        return True
+
+def n_upto(a, b):
+    quad = 0
+    n = 0
+    while True:
+        quad = n**2+a*n+b
+        n += 1
+        if not isPrime(quad):
+            break
+    return n-2
+
+maxP = 0
+result = []
+
+
+def setMax(a,b):
+    global result
+    result = [a,b]
+
+
+def calcPrimes(incA, incB):
+    global maxP
+    global result
+
+    a = 0
+    while abs(a)<1000:
+        b = 0
+        while abs(b)<1000:
+            n_loop = n_upto(a,b)
+            if n_loop>maxP:
+                maxP = n_loop
+                setMax(a,b)
+            b += incA
+        a += incB
+
+calcPrimes(1,1)
+calcPrimes(1, -1)
+calcPrimes(-1,1)
+calcPrimes(-1, 1)
+
+print result[0]*result[1]
