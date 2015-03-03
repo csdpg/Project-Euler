@@ -1,0 +1,17 @@
+s = 1
+
+n = 1
+
+inc = 2
+
+block_of = 1001
+
+while inc<=block_of:
+    count = 0
+    while count<4:
+        count += 1
+        n += inc
+        s += n
+    inc += 2
+
+print s
