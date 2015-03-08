@@ -1,0 +1,25 @@
+def property(num):
+    num = str(num)
+
+    if int(num[1:4])%2==0:
+        if int(num[2:5])%3==0:
+            if int(num[3:6])%5==0:
+                if int(num[4:7])%7==0:
+                    if int(num[5:8])%11==0:
+                        if int(num[6:9])%13==0:
+                            if int(num[7:10])%17==0:
+                                return True
+    return False
+
+import itertools as it
+
+result = 0
+
+for x in it.permutations("0123456789"):
+    num = ""
+    for digit in x:
+        num += digit
+    if property(num):
+        result += int(num)
+
+print result
