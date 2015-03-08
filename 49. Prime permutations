@@ -1,0 +1,77 @@
+import math
+
+def isPrime(n):
+    if n==1:
+        return False
+    elif n<4:
+        return True
+    elif n%2==0:
+        return False
+    elif n<9:
+        return True
+    elif n%3==0:
+        None
+    else:
+        r = math.floor(math.sqrt(n))
+        f =5
+        while f<=r:
+            if n%f==0:
+                return False
+            if n%(f+2)==0:
+                return False
+            f += 6
+        return True
+
+def GENPrimeNEW():
+    n = 1
+    while True:
+        n += 1
+        if isPrime(n):
+            yield n
+
+genP = GENPrimeNEW()
+
+SS = []
+for i in range(1500):
+    nextP = next(genP)
+    if 999<nextP<=9999:
+        SS.append(nextP)
+
+for prime in SS:
+
+
+    for jump in range(1, len(SS)):
+        first = 0
+        second = 0
+        third = 0
+        try:
+            index = SS.index(prime)
+            first = prime
+            second = SS[index+jump]
+            diff = second - first
+            if (first+2*diff) in SS:
+                third = first + 2*diff
+
+            first = str(first)
+            second = str(second)
+            third = str(third)
+
+            set1 = set()
+            set2 = set()
+            set3 = set()
+
+            for digit in first:
+                set1.add(digit)
+            for digit in second:
+                set2.add(digit)
+            for digit in third:
+                set3.add(digit)
+
+            if set1 == set2 and set2 == set3:
+                if set1 != {'1','4','8','7'}:
+                    print (first+ second+ third)
+
+            else:
+                continue
+        except:
+            continue
