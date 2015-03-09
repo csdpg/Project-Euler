@@ -1,0 +1,17 @@
+def sumOfDigits(c):
+    result = 0
+    while c != 0:
+        result += c%10
+        c = c/10
+    return result
+
+
+maxSum = 0
+for a in xrange(100):
+    for b in xrange(100):
+        c = a**b
+        SOD = sumOfDigits(c)
+        if SOD>maxSum:
+            maxSum = SOD
+            print maxSum
+print maxSum
