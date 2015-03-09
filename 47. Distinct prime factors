@@ -1,0 +1,51 @@
+import math
+
+def isPrime(n):
+    if n==1:
+        return False
+    elif n<4:
+        return True
+    elif n%2==0:
+        return False
+    elif n<9:
+        return True
+    elif n%3==0:
+        return False
+    else:
+        r = math.floor(math.sqrt(n))
+        f =5
+        while f<=r:
+            if n%f==0:
+                return False
+            if n%(f+2)==0:
+                return False
+            f += 6
+        return True
+
+def factors(n):
+    result = []
+    for i in range(1, int(n**0.5) + 1):
+        if n%i == 0:
+            result+= (i, n//i)
+    return result
+
+def primeFactors(n):
+    factorsL = factors(n)
+    primeF = set()
+    for factor in factorsL:
+        if isPrime(factor):
+            primeF.add(factor)
+    return primeF
+
+i = 10
+while True:
+    if not isPrime(i) and not isPrime(i+1) and not isPrime(i+2) and not isPrime(i+3):
+        set1 = primeFactors(i)
+        set2 = primeFactors(i+1)
+        set3 = primeFactors(i+2)
+        set4 = primeFactors(i+3)
+        if len(set1)==4 and len(set2)==4 and len(set3)==4 and len(set4)==4:
+            if set1.intersection(set2) == set() and set2.intersection(set3) == set() and set3.intersection(set4) == set():
+                print (set1,set2,set3,set4), (i, i+1,i+2,i+3)
+                break
+    i += 1
