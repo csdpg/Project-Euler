@@ -1,0 +1,33 @@
+def sett(n):
+    n = str(n)
+
+    n_set = set()
+
+    for i in n:
+        n_set.add(i)
+
+    return n_set
+
+
+
+def counter(n):
+    multiplicant = 1
+    counter = 0
+    while multiplicant<=6:
+
+        if sett(n) == sett(n*multiplicant) and len(str(n*multiplicant)) == len(str(n)):
+            multiplicant += 1
+            counter += 1
+            continue
+        break
+    return counter
+
+n = 0
+while True:
+    n += 1
+    if len(sett(n)) != len(str(n)):
+        continue
+
+    if counter(n) == 6:
+        print n
+        break
