@@ -1,0 +1,19 @@
+def sumOfSquares_digits(n):
+    result = 0
+    while n!=0:
+        result += (n%10)**2
+        n /= 10
+    return result
+
+def F4_or_E9(n):
+    if n == 89:
+        return 1
+    if n == 1:
+        return 0
+    return F4_or_E9(sumOfSquares_digits(n))
+
+result = 0
+for n in xrange(1,10000000):
+    result += F4_or_E9(n)
+
+print result
