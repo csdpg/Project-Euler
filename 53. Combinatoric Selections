@@ -1,0 +1,15 @@
+def fact(n):
+    product = 1
+    for i in xrange(n):
+        product *= i+1
+    return product
+
+
+result = 0
+for n in xrange(23, 101):
+    for r in xrange(0, n+1):
+        nCr = fact(n)/(fact(r)*fact(n-r))
+        print nCr
+        if nCr>1000000:
+            result += 1
+print result
