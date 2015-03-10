@@ -1,0 +1,36 @@
+def reverse_add(n):
+    result = ""
+    n = str(n)
+    num = n
+
+    while n!="":
+        result += n[-1]
+        n = n[:-1]
+
+    return int(result) + int(num)
+
+def isPalindrome(n):
+    n = str(n)
+    if n == "":
+        return True
+    if n[0]==n[-1]:
+        None
+    else:
+        return False
+    return isPalindrome(n[1:-1])
+
+result = 0
+
+sett1 = set ()
+
+for n in xrange(0, 10000):
+    num = n
+    for count in range(1, 50):
+        n = reverse_add(n)
+        if isPalindrome(n):
+            break
+    else:
+        result += 1
+        sett1.add(num)
+
+print result
